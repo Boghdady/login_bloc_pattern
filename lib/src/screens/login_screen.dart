@@ -6,6 +6,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = Provider.of(context);
+
     return Scaffold(
       body: SizedBox(
         child: Container(
@@ -19,7 +20,7 @@ class LoginScreen extends StatelessWidget {
             children: <Widget>[
               emailField(bloc),
               passwordField(bloc),
-              submitButton(),
+              submitButton(bloc),
             ],
           ),
         ),
@@ -61,10 +62,15 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget submitButton() {
-    return FlatButton(
-      child: Text("Submit"),
-      onPressed: () {},
-    );
+  Widget submitButton(LoginBloc bloc) {
+    return StreamBuilder(
+        stream: bloc.submitValid,
+        builder: (context, snapshot) {
+          return FlatButton(
+            child: Text("Submit"),
+            // it will return data if email and password is valid
+            onPressed: snapshot.hasData ? bloc.btnSubmitClick : null,
+          );
+        });
   }
 }
