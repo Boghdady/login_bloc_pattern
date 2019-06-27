@@ -11,6 +11,7 @@ class LoginBloc extends Object with ValidatorMixin {
 
   final _emailController = BehaviorSubject<String>();
   final _passwordController = BehaviorSubject<String>();
+  final _emailCounter = BehaviorSubject<int>();
 
   // Retrieve data from stream ( will retrieve valid email or error )
   Stream<String> get email => _emailController.stream.transform(validateEmail);
@@ -19,6 +20,7 @@ class LoginBloc extends Object with ValidatorMixin {
   // take the latest values if email and password stream and return true if two streams are valid
   Stream<bool> get submitValid =>
       Observable.combineLatest2(email, password, (e, p) => true);
+  Stream<int> get counter => _emailCounter.stream;
 
   // Add data to stream
   Function(String) get changeEmail => _emailController.sink.add;
@@ -32,10 +34,15 @@ class LoginBloc extends Object with ValidatorMixin {
     print('Password is $validPassword');
   }
 
+  LoginBloc() {
+    // add email length in emailCounter stream
+    _emailController.listen((email) => _emailCounter.add(email.length));
+  }
   // close stream controllers after done
   void dispose() {
     _emailController.close();
     _passwordController.close();
+    _emailCounter.close();
   }
 }
 // make instance of bloc when i use single global instance

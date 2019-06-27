@@ -8,6 +8,21 @@ class LoginScreen extends StatelessWidget {
     final bloc = Provider.of(context);
 
     return Scaffold(
+      appBar: AppBar(
+        actions: <Widget>[
+          StreamBuilder<int>(
+              stream: bloc.counter,
+              builder: (context, snapshot) {
+                return Chip(
+                  label: Text(
+                    (snapshot.data ?? 0).toString(),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  backgroundColor: Colors.red,
+                );
+              }),
+        ],
+      ),
       body: SizedBox(
         child: Container(
           margin: EdgeInsets.only(
