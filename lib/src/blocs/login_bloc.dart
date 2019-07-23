@@ -3,9 +3,11 @@ import 'package:rxdart/rxdart.dart';
 
 import 'package:login_bloc_section14/src/mixins/validator_mixin.dart';
 
+import 'provider.dart';
+
 // StreamController = Subject in rxDart
 // Stream = Observable in rxDart
-class LoginBloc extends Object with ValidatorMixin {
+class LoginBloc extends BlocBase with ValidatorMixin {
 //  final _emailController = StreamController<String>.broadcast();
 //  final _passwordController = StreamController<String>.broadcast();
 
