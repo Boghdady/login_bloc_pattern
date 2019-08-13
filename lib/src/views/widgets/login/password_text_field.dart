@@ -12,13 +12,18 @@ class PasswordField extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.password,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return TextField(
-          onChanged: bloc.changePassword,
-          obscureText: false,
-          decoration: InputDecoration(
-            labelText: 'Enter Your password',
-            hintText: 'Password',
-            errorText: snapshot.error,
+        return Container(
+          width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.only(top: 16.0),
+          child: TextField(
+            onChanged: bloc.changePassword,
+            obscureText: false,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.grey[100],
+              hintText: 'Enter Your password',
+              errorText: snapshot.error,
+            ),
           ),
         );
       },

@@ -30,27 +30,30 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         actions: <Widget>[
           CounterShip(bloc: bloc),
         ],
       ),
-      body: BlocProvider<LoginBloc>(
-        bloc: bloc,
-        child: SizedBox(
-          child: Container(
-            margin: EdgeInsets.only(
-              right: 24.0,
-              left: 24.0,
-              bottom: 24.0,
-              top: MediaQuery.of(context).size.height * 0.20,
-            ),
-            child: Column(
-              children: <Widget>[
-                EmailField(bloc: bloc),
-                PasswordField(bloc: bloc),
-                SubmitButton(bloc: bloc),
-              ],
+      body: SingleChildScrollView(
+        child: BlocProvider<LoginBloc>(
+          bloc: bloc,
+          child: SizedBox(
+            child: Container(
+              margin: EdgeInsets.only(
+                right: 24.0,
+                left: 24.0,
+                bottom: 24.0,
+                top: MediaQuery.of(context).size.height * 0.20,
+              ),
+              child: Column(
+                children: <Widget>[
+                  EmailField(bloc: bloc),
+                  PasswordField(bloc: bloc),
+                  SubmitButton(bloc: bloc),
+                ],
+              ),
             ),
           ),
         ),
