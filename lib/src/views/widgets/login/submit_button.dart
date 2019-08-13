@@ -18,8 +18,8 @@ class SubmitButton extends StatelessWidget {
             child: RaisedButton(
               child: Text(
                 ' تسجيل الدخول',
+                style: Theme.of(context).textTheme.button,
               ),
-              color: Colors.lightBlue,
               onPressed: () {
                 if (snapshot.hasData == true) {
                   bloc.btnSubmitClick();

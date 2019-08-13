@@ -18,8 +18,9 @@ class EmailField extends StatelessWidget {
             onChanged: bloc.changeEmail,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
+              enabledBorder: InputBorder.none,
               filled: true,
-              fillColor: Colors.grey[100],
+              fillColor: Colors.white,
               hintText: 'Enter Email Address',
               errorText: snapshot.error,
             ),

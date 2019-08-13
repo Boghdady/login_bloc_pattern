@@ -8,7 +8,8 @@ class ThemeManager {
   static Color darkPrimary = Colors.black;
   static Color lightAccent = Colors.blue;
   static Color darkAccent = Colors.blueAccent;
-  static Color lightBG = Color(0xfffcfcff);
+  //static Color lightBG = Color(0xfffcfcff);
+  static Color lightBG = Colors.grey[100];
   static Color darkBG = Colors.black;
   static Color badgeColor = Colors.red;
 
@@ -22,8 +23,24 @@ class ThemeManager {
       elevation: 0,
       textTheme: TextTheme(
         title: TextStyle(
-            color: lightBG, fontSize: 36.0, fontWeight: FontWeight.w800),
+            color: Colors.grey[800],
+            fontSize: 24.0,
+            fontWeight: FontWeight.w500),
       ),
+    ),
+    textTheme: TextTheme(
+      headline: TextStyle(
+          color: Colors.grey[800], fontSize: 36.0, fontWeight: FontWeight.w800),
+      title: TextStyle(
+          color: Colors.grey[800], fontSize: 24.0, fontWeight: FontWeight.w600),
+      body1: TextStyle(
+          color: Colors.grey[800], fontSize: 18.0, fontWeight: FontWeight.w400),
+      button: TextStyle(
+          color: lightBG, fontSize: 18.0, fontWeight: FontWeight.w500),
+    ),
+    buttonTheme: ButtonThemeData(
+      buttonColor: Colors.deepPurple,
+      textTheme: ButtonTextTheme.primary,
     ),
   );
 

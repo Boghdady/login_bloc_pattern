@@ -20,7 +20,8 @@ class PasswordField extends StatelessWidget {
             obscureText: false,
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.grey[100],
+              enabledBorder: InputBorder.none,
+              fillColor: Colors.white,
               hintText: 'Enter Your password',
               errorText: snapshot.error,
             ),
