@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:login_bloc_section14/src/helpers/constants.dart';
-
 import '../../../blocs/login_bloc.dart';
 
 class SubmitButton extends StatelessWidget {
@@ -13,18 +12,24 @@ class SubmitButton extends StatelessWidget {
     return StreamBuilder(
         stream: bloc.submitValid,
         builder: (context, AsyncSnapshot<bool> snapshot) {
-          return FlatButton(
-            child: Text("Submit"),
-            // it will return data if email and password is valid
-            onPressed: () {
-              if (snapshot.hasData == true) {
-                bloc.btnSubmitClick();
-                print(snapshot.data);
-                Navigator.pushNamed(context, productsRoute);
-              } else {
-                return null;
-              }
-            },
+          return Container(
+            margin: EdgeInsets.only(top: 16.0),
+            width: MediaQuery.of(context).size.width,
+            child: RaisedButton(
+              child: Text(
+                'Subbmit User',
+              ),
+              color: Colors.lightBlue,
+              onPressed: () {
+                if (snapshot.hasData == true) {
+                  bloc.btnSubmitClick();
+                  print(snapshot.data);
+                  Navigator.pushNamed(context, productsRoute);
+                } else {
+                  return null;
+                }
+              },
+            ),
           );
         });
   }

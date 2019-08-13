@@ -12,13 +12,17 @@ class EmailField extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.email,
       builder: (context, snapshot) {
-        return TextField(
-          onChanged: bloc.changeEmail,
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-            labelText: 'Enter Email Address',
-            hintText: 'you@example.com',
-            errorText: snapshot.error,
+        return Container(
+          width: MediaQuery.of(context).size.width,
+          child: TextField(
+            onChanged: bloc.changeEmail,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.grey[100],
+              hintText: 'Enter Email Address',
+              errorText: snapshot.error,
+            ),
           ),
         );
       },
