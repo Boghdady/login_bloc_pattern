@@ -19,9 +19,10 @@ class Router {
             builder: (_) => ProductDetails(product.title, product.qty));
       default:
         return MaterialPageRoute(
-            builder: (context) => UndefinedView(
-                  name: settings.name,
-                ));
+          builder: (context) => UndefinedView(
+            name: settings.name,
+          ),
+        );
     }
   }
 }
