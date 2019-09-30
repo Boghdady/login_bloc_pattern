@@ -15,7 +15,7 @@ class EmailField extends StatelessWidget {
         return Container(
           width: MediaQuery.of(context).size.width,
           child: TextField(
-            onChanged: bloc.changeEmail,
+            onChanged: (String value) => bloc.changeEmail.add(value),
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               enabledBorder: InputBorder.none,

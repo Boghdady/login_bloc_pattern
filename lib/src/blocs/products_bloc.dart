@@ -8,26 +8,33 @@ class ProductsBloc extends BlocBase {
   // fetch products
   final StreamController<List<Product>> _productsController =
       StreamController<List<Product>>();
-  Stream<List<Product>> get productsStream => _productsController.stream;
-  StreamSink<List<Product>> get productsSink => _productsController.sink;
-
-  // add product to products stream
+  // add product to products List stream
   StreamController<Product> _addProductController = StreamController<Product>();
-  StreamSink<Product> get addProductSink => _addProductController.sink;
-
   // delete product from products stream
   StreamController<Product> _removeProductController =
       StreamController<Product>();
+
+  // Adding data to stream
+  StreamSink<List<Product>> get productsListSink => _productsController.sink;
+  StreamSink<Product> get addProductSink => _addProductController.sink;
   StreamSink<Product> get removeProductSink => _removeProductController.sink;
+
+  // Retrieve data from stream
+  Stream<List<Product>> get productsStream => _productsController.stream;
 
   void _removeProduct(Product product) {
     productsList.remove(product);
-    productsSink.add(productsList);
+    productsListSink.add(productsList);
   }
 
   void _addProduct(Product product) {
     productsList.add(product);
-    productsSink.add(productsList);
+    productsListSink.add(productsList);
+  }
+
+  void listen() {
+    _addProductController.stream.listen(_addProduct);
+    _removeProductController.stream.listen(_removeProduct);
   }
 
   void fetchProducts() async {
@@ -41,12 +48,7 @@ class ProductsBloc extends BlocBase {
       Product('5', 'Product 5', 60),
       Product('6', 'Product 6', 70),
     ];
-    productsSink.add(productsList);
-  }
-
-  void listen() {
-    _addProductController.stream.listen(_addProduct);
-    _removeProductController.stream.listen(_removeProduct);
+    productsListSink.add(productsList);
   }
 
   ProductsBloc() {

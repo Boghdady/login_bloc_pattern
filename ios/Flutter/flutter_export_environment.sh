@@ -1,8 +1,8 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/index/Documents/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/index/Documents/Work/My Coding/Flutter-Projects/login_bloc_pattern"
-export "FLUTTER_TARGET=/Users/index/Documents/Work/My Coding/Flutter-Projects/login_bloc_pattern/lib/main.dart"
+export "FLUTTER_APPLICATION_PATH=/Users/index/Documents/Work/My Coding/Flutter-Projects/my_own_bloc_pattern_structure"
+export "FLUTTER_TARGET=/Users/index/Documents/Work/My Coding/Flutter-Projects/my_own_bloc_pattern_structure/lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "FLUTTER_FRAMEWORK_DIR=/Users/index/Documents/flutter/bin/cache/artifacts/engine/ios"

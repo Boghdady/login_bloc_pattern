@@ -15,18 +15,20 @@ class LoginBloc extends BlocBase with ValidatorMixin {
   final _passwordController = BehaviorSubject<String>();
   final _emailCounter = BehaviorSubject<int>();
 
+  // Add data to stream
+  StreamSink<String> get changeEmail => _emailController.sink;
+  Function(String) get changePassword => _passwordController.sink.add;
+
   // Retrieve data from stream ( will retrieve valid email or error )
   Stream<String> get email => _emailController.stream.transform(validateEmail);
   Stream<String> get password =>
       _passwordController.stream.transform(validatePassword);
+
   // take the latest values if email and password stream and return true if two streams are valid
   Stream<bool> get submitValid =>
       Observable.combineLatest2(email, password, (e, p) => true);
-  Stream<int> get counter => _emailCounter.stream;
 
-  // Add data to stream
-  Function(String) get changeEmail => _emailController.sink.add;
-  Function(String) get changePassword => _passwordController.sink.add;
+  Stream<int> get counter => _emailCounter.stream;
 
   void btnSubmitClick() {
     final validEmail = _emailController.value;
