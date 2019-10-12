@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_bloc_section14/src/api/user_api.dart';
 import 'package:login_bloc_section14/src/helpers/constants.dart';
 import '../../../blocs/login_bloc.dart';
 
@@ -24,7 +25,9 @@ class SubmitButton extends StatelessWidget {
                 if (snapshot.hasData == true) {
                   bloc.btnSubmitClick();
                   print(snapshot.data);
-                  Navigator.pushNamed(context, productsRoute);
+                  UserApi userApi = UserApi();
+                  userApi.getAllUsers();
+//                  Navigator.pushNamed(context, productsRoute);
                 } else {
                   return null;
                 }
