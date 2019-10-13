@@ -1,121 +1,66 @@
-class UserModel {
-  int id;
+class LoginModel {
+  String status;
+  String token;
+  Data data;
+
+  LoginModel({this.status, this.token, this.data});
+
+  LoginModel.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    token = json['token'];
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['status'] = this.status;
+    data['token'] = this.token;
+    if (this.data != null) {
+      data['data'] = this.data.toJson();
+    }
+    return data;
+  }
+}
+
+class Data {
+  User user;
+
+  Data({this.user});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    user = json['user'] != null ? new User.fromJson(json['user']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.user != null) {
+      data['user'] = this.user.toJson();
+    }
+    return data;
+  }
+}
+
+class User {
+  String role;
   String name;
-  String username;
   String email;
-  Address address;
-  String phone;
-  String website;
-  Company company;
+  String id;
 
-  UserModel(
-      {this.id,
-      this.name,
-      this.username,
-      this.email,
-      this.address,
-      this.phone,
-      this.website,
-      this.company});
+  User({this.role, this.name, this.email, this.id});
 
-  UserModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+  User.fromJson(Map<String, dynamic> json) {
+    role = json['role'];
     name = json['name'];
-    username = json['username'];
     email = json['email'];
-    address =
-        json['address'] != null ? new Address.fromJson(json['address']) : null;
-    phone = json['phone'];
-    website = json['website'];
-    company =
-        json['company'] != null ? new Company.fromJson(json['company']) : null;
+    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['role'] = this.role;
     data['name'] = this.name;
-    data['username'] = this.username;
     data['email'] = this.email;
-    if (this.address != null) {
-      data['address'] = this.address.toJson();
-    }
-    data['phone'] = this.phone;
-    data['website'] = this.website;
-    if (this.company != null) {
-      data['company'] = this.company.toJson();
-    }
-    return data;
-  }
-}
-
-class Address {
-  String street;
-  String suite;
-  String city;
-  String zipcode;
-  Geo geo;
-
-  Address({this.street, this.suite, this.city, this.zipcode, this.geo});
-
-  Address.fromJson(Map<String, dynamic> json) {
-    street = json['street'];
-    suite = json['suite'];
-    city = json['city'];
-    zipcode = json['zipcode'];
-    geo = json['geo'] != null ? new Geo.fromJson(json['geo']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['street'] = this.street;
-    data['suite'] = this.suite;
-    data['city'] = this.city;
-    data['zipcode'] = this.zipcode;
-    if (this.geo != null) {
-      data['geo'] = this.geo.toJson();
-    }
-    return data;
-  }
-}
-
-class Geo {
-  String lat;
-  String lng;
-
-  Geo({this.lat, this.lng});
-
-  Geo.fromJson(Map<String, dynamic> json) {
-    lat = json['lat'];
-    lng = json['lng'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['lat'] = this.lat;
-    data['lng'] = this.lng;
-    return data;
-  }
-}
-
-class Company {
-  String name;
-  String catchPhrase;
-  String bs;
-
-  Company({this.name, this.catchPhrase, this.bs});
-
-  Company.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    catchPhrase = json['catchPhrase'];
-    bs = json['bs'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['catchPhrase'] = this.catchPhrase;
-    data['bs'] = this.bs;
+    data['id'] = this.id;
     return data;
   }
 }

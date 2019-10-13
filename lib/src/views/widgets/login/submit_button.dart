@@ -26,7 +26,10 @@ class SubmitButton extends StatelessWidget {
                   bloc.btnSubmitClick();
                   print(snapshot.data);
                   UserApi userApi = UserApi();
-                  userApi.getAllUsers();
+                  userApi.login(
+                    email: "emauq@gmail.com",
+                    password: "12345677",
+                  );
 //                  Navigator.pushNamed(context, productsRoute);
                 } else {
                   return null;
